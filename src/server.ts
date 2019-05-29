@@ -1,8 +1,9 @@
+import {} from 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 
-import routes from './routes'
+import { routes, authRoutes } from './routes'
 
 class Server {
   public express: express.Application
@@ -28,6 +29,7 @@ class Server {
   }
 
   private routes (): void {
+    this.express.use('/auth', authRoutes)
     this.express.use(routes)
   }
 }

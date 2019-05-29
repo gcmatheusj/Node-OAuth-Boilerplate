@@ -1,9 +1,12 @@
 import { Router } from 'express'
 
 import UserController from './app/controllers/UserController'
+import SessionController from './app/controllers/SessionController'
 
-const routes = Router()
+export const routes = Router()
 
 routes.get('/users', UserController.index)
 
-export default routes
+export const authRoutes = Router()
+
+authRoutes.get('/google', SessionController.google)
